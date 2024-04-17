@@ -1,4 +1,4 @@
-const usuarios = [
+const usuarios: {nome:string,pets:string[]} [] = [
     {
         nome: "João",
         pets: ["Max"],
@@ -21,20 +21,20 @@ const usuarios = [
     },
 ];
 
-const buscarDonoPet = (lista, nomePet) => {
-    let usuarioEncontrado;
+const buscarDonoPet = (lista:{nome:string,pets:string[]} [], nomePet:string) : string => {
+    let usuarioEncontrado: {nome:string,pets:string[]};
+    usuarioEncontrado = {nome: "", pets: []}
 
     for (const usuario of lista) {
         if (usuario.pets.includes(nomePet)) {
             usuarioEncontrado = usuario;
         }
     }
-
-    if (usuarioEncontrado) {
-        console.log(`O dono(a) do(a) ${nomePet} é o(a) ${usuarioEncontrado.nome}`);
+    if (usuarioEncontrado.nome) {
+        return `O dono(a) do(a) ${nomePet} é o(a) ${usuarioEncontrado.nome}`;
     } else {
-        console.log(`Que pena ${nomePet}, não encontramos seu dono(a)`);
+        return `Que pena ${nomePet}, não encontramos seu dono(a)`;
     }
 }
 
-buscarDonoPet(usuarios, 'Guido');
+console.log(buscarDonoPet(usuarios, 'Naninha'));
